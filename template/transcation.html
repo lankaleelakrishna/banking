@@ -1,0 +1,87 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Transaction History - Krishna's Bank</title>
+    <link rel="stylesheet" href="{% static 'css/transcation.css' %}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Krishna's Bank</h1>
+            </div>
+            <ul>
+                <li><a href="{% url 'app1:lobby' %}">Lobby</a></li>
+                <li><a href="{% url 'app1:logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Transaction History Section -->
+    <section class="transaction-history">
+        <div class="transaction-container">
+            <h2>Your Transaction History</h2>
+            <p>Here are all your past transactions. You can keep track of your deposits, withdrawals, and transfers.</p>
+
+            <!-- Transaction Table -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time of Transcation</th>
+                        <th>Transaction Type</th>
+                        <th>Sender Username</th>
+                        <th>Reciever Username</th>
+                        <th>Amount Deducted</th>
+                        <th>Amount Credieted</th>
+                        <th>Account Balance</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if trans %}
+                    {% for transcation in trans %}
+                    <tr>
+                        <td>{{transcation.time_of_transaction}}</td>
+                        <td>{{transcation.transaction_type}}</td>
+                        <td>{{transcation.sender_user_name}}</td>
+                        <td>{{transcation.reciever_name}}</td>
+                        <td>{{transcation.amount_deducted}}</td>
+                        <td>{{transcation.amount_recieved}}</td>
+                        <td>{{transcation.balance}}</td>
+                    </tr>
+                    {% endfor %}
+
+                    {% else %}
+                    <tr>
+                        <td colspan="7">No Transaction Available</td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 Krishna's Bank. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-icon">Facebook</a>
+                <a href="#" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon">Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

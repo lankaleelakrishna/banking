@@ -26,7 +26,8 @@ def register(request):
         acc.save()
         with open('template/account_creation_success.html','r')as file:
             html_content=file.read()
-            html_content=html_content.replace('{firstname}',firstname)
+            html_content=html_content.replace("[User's Email]",email)
+            html_content=html_content.replace('{username}',username)
         subject='Account Created Succcessfully'
         from_email=settings.EMAIL_HOST_USER
         recipitent_list=[email]
@@ -71,10 +72,11 @@ def deposite(request):
         Account.save()
         trans=transaction(transaction_type='deposite',main_user_name=request.user.username,sender_user_name='system',amount_deducted=amount,amount_recieved=amount,reciever_name=request.user.username,balance=Account.account_balance)
         trans.save()
-        with open('template/account_deposite_success.html','r')as file:
+        with open('template/account_deposit_success.html','r')as file:
             html_content=file.read()
-            html_content=html_content.replace('{firstname}',request.user.username)
-        subject='Account Created Succcessfully'
+            html_content=html_content.replace('{username}',request.user.username)
+            html_content=html_content.replace('{amount}',amount)
+        subject='Amount Deposited Succcessfully'
         from_email=settings.EMAIL_HOST_USER
         recipitent_list=[Account.email]
         email_account_creation=EmailMultiAlternatives(subject,'',from_email,recipitent_list)
@@ -93,8 +95,9 @@ def withdraw(request):
         trans.save()
         with open('template/account_withdraw_success.html','r')as file:
             html_content=file.read()
-            html_content=html_content.replace('{firstname}',request.user.username)
-        subject='Account Created Succcessfully'
+            html_content=html_content.replace('{username}',request.user.username)
+            html_content=html_content.replace('{amount}',amount)
+        subject='Amount Withdrawn Succcessfully'
         from_email=settings.EMAIL_HOST_USER
         recipitent_list=[Account.email]
         email_account_creation=EmailMultiAlternatives(subject,'',from_email,recipitent_list)
@@ -119,10 +122,13 @@ def sendmoney(request):
             recipient.save()
             trans=transaction(transaction_type='Send Money',main_user_name=sender.username,sender_user_name=sender.username,amount_deducted=amount,amount_recieved=amount,reciever_name=recipient.username,balance=sender.account_balance)
             trans.save()
-            with open('template/account_sendmoney_success.html','r')as file:
+            with open('template/account_sender_success.html','r')as file:
                 html_content=file.read()
-                html_content=html_content.replace('{firstname}',request.user.username)
-            subject='Account Created Succcessfully'
+                html_content=html_content.replace('{sender_user_name}',sender.username)
+                html_content=html_content.replace('{receiver_name}',recipient.username)
+                html_content=html_content.replace('{amount}',amount)
+                html_content=html_content.replace('{receiver_email}',recipient.email)
+            subject='Account Sended Succcessfully'
             from_email=settings.EMAIL_HOST_USER
             recipitent_list=[sender.email]
             email_account_creation=EmailMultiAlternatives(subject,'',from_email,recipitent_list)
@@ -131,10 +137,13 @@ def sendmoney(request):
             
             trans=transaction(transaction_type='Send Money',main_user_name=recipient.username,sender_user_name=sender.username,amount_deducted=amount,amount_recieved=amount,reciever_name=recipient.username,balance=recipient.account_balance)
             trans.save()
-            with open('template/account_sendmoney_success.html','r')as file:
+            with open('template/account_receiver_success.html','r')as file:
                 html_content=file.read()
-                html_content=html_content.replace('{firstname}',request.user.username)
-            subject='Account Created Succcessfully'
+                html_content=html_content.replace('{sender_user_name}',sender.username)
+                html_content=html_content.replace('{receiver_name}',recipient.username)
+                html_content=html_content.replace('{amount}',amount)
+                html_content=html_content.replace('{sender_email}',sender.email)
+            subject='Account Recevide Succcessfully'
             from_email=settings.EMAIL_HOST_USER
             recipitent_list=[recipient.email]
             email_account_creation=EmailMultiAlternatives(subject,'',from_email,recipitent_list)

@@ -37,8 +37,9 @@ nav ul {
 nav ul li a {
     color: white;
     text-decoration: none;
-    font-size: 1rem; /* Slightly larger font for navigation links */
+    font-size: 1.2rem; /* Slightly larger font for navigation links */
     font-weight: 500;
+    margin-right: 3vw;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
@@ -46,6 +47,21 @@ nav ul li a:hover {
     color: #f9e1c1;  /* Light skin color for hover effect */
     transform: scale(1.1);  /* Subtle zoom effect */
 }
+nav ul li a{
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f9e1c1;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+nav ul li a:hover{
+  background-color: #49382e;
+}
+
 
 
   
@@ -61,7 +77,7 @@ nav ul li a:hover {
   
   .hero-text {
     text-align: center;
-    color: #f5f5f5; /* Light gray text color */
+    color: #f7e8b2; /* Light gray text color */
   }
   
   .hero-text h2 {
@@ -71,7 +87,7 @@ nav ul li a:hover {
   }
   
   .hero-text p {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     animation: fadeInUp 1.2s ease-in-out;
   }
   
@@ -96,8 +112,9 @@ nav ul li a:hover {
   
   .services h2 {
     color: #f7e8b2; /* Skin color */
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     text-align: center;
+    font-size: 3vw;
     animation: fadeInUp 1s ease-in-out;
   }
   

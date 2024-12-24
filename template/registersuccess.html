@@ -27,7 +27,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 90vw; /* Constrain nav width */
+            max-width: 100vw; /* Constrain nav width */
             margin: 0 auto; /* Center the navigation */
         }
 
@@ -49,6 +49,7 @@
             text-decoration: none;
             font-size: 1rem; /* Slightly larger font for navigation links */
             font-weight: 500;
+            margin-right: 3vw;
             transition: color 0.3s ease, transform 0.3s ease;
         }
 
@@ -80,8 +81,10 @@
             transition: background-color 0.3s ease;
         }
 
+       
         a:hover {
-            background-color: #45a049;  /* Darker green when hovering */
+            background-color: #49382e;  /* Darker green when hovering */
+            color: #f9e1c1;
         }
 
         footer {
@@ -97,7 +100,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            max-width: 90vw; /* Constrain footer content width */
+            max-width: 100vw; /* Constrain footer content width */
             margin: 0 auto; /* Center footer content */
         }
 
@@ -108,14 +111,21 @@
 
         footer .social-icon {
             color: black;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f9e1c1;
+            border-radius: 5px;
             text-decoration: none;
             font-size: 1rem;  /* Increased icon size */
             transition: color 0.3s ease, transform 0.3s ease;
+            margin-right: 1vw ;
         }
 
         footer .social-icon:hover {
-            color: #f9e1c1;  /* Light skin color on hover */
+            color: #e6d9b8;  /* Light skin color on hover */
             transform: translateY(-3px); /* Subtle hover animation */
+            background-color: #49382e;
+            font-weight: bold;
         }
 
         footer p {
@@ -141,7 +151,7 @@
 
     <h1>Register Successful</h1>
     <p>Your account has been successfully created!</p>
-    <a href="{% url 'app1:lobby' %}">Go to Lobby</a> <!-- Replace with actual login link -->
+    <a href="{% url 'app1:lobby' %}">Go to Login</a> <!-- Replace with actual login link -->
 
     <footer>
         <div class="footer-container">

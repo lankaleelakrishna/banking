@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Deposit Successful</title>
+    <title>Money Received</title>
     <style>
         * {
             margin: 0;
@@ -24,7 +24,7 @@
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 30px;
+            padding: 20px;
             text-align: center;
             max-width: 500px;
             width: 100%;
@@ -39,27 +39,15 @@
         p {
             font-size: 16px;
             color: #333;
-            margin-bottom: 10px;
-        }
-
-        .highlight {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .deposit-amount {
-            font-size: 18px;
-            color: #28a745;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>{username}</h1>
-        <h1>Deposit Successful!</h1>
-        <p>Your deposit has been successfully processed.</p>
-        <p>You have deposited <span class="deposit-amount">{amount}</span> into your account.</p>
-        <p>You can now continue managing your account.</p>
+        <h1>Hello, {receiver_username}</h1>
+        <p>You have successfully received <strong>${amount}</strong> from <strong>{sender_user_name}</strong> 
+            with the email address <strong>{sender_email}</strong>.</p>
+        <p>Thank you for using our service!</p>
     </div>
 </body>
 </html>
